@@ -1,7 +1,7 @@
 import random
 import math
 
-BOT_NAME = "YeeNeira383"
+BOT_NAME = "Preston Yee, Wilson Neira - 383"
 
 class RandomAgent:
     """Agent that picks a random available move.  You should be able to beat it."""
@@ -41,9 +41,11 @@ class MinimaxAgent:
         best_util = -math.inf if nextp == 1 else math.inf
         best_move = None
         best_state = None
-
+        
         for move, state in state.successors():
             util = self.minimax(state)
+            # print("nextp:", nextp, "| util:", util, "| best_util:", best_util)
+
             if ((nextp == 1) and (util > best_util)) or ((nextp == -1) and (util < best_util)):
                 best_util, best_move, best_state = util, move, state
         return best_move, best_state
@@ -56,33 +58,23 @@ class MinimaxAgent:
 
         Returns: the exact minimax utility value of the state
         """
-        
-        player = state.next_player() # Identify player's turn for current board
-        
-        if player == 1:
-            return self.maxValue(state)
+        # If state is terminal state, return it's utility
+        if (state.is_full() == 0):
+            return state.utility()
+
+        # Recurse through minimax
+        if state.next_player() == 1:
+            v = -math.inf
+            for m, s in state.successors():
+                util = self.minimax(s)
+                v = max(v, util)
+            return v
         else:
-            return self.minValue(state)
-
-    def maxValue(self, state):
-        if len(state.successors()) == 0: # If state is terminal return utility value
-            return state.utility()
-        
-        termVal = -math.inf
-        for m, s in range(len(state.successors())):
-            termVal = max(termVal, self.minValue(s))
-
-        return termVal
-
-    def minValue(self, state):
-        if len(state.successors()) == 0: # If state is terminal return utility value
-            return state.utility()
-        
-        termVal = math.inf
-        for m, s in range(len(state.successors())):
-            termVal = min(termVal, self.maxValue(s))
-
-        return termVal
+            v = math.inf
+            for m, s in state.successors():
+                util = self.minimax(s)
+                v = min(v, util)
+            return v
 
 class MinimaxHeuristicAgent(MinimaxAgent):
     """Artificially intelligent agent that uses depth-limited minimax to select the best move.
@@ -180,4 +172,3 @@ class OtherMinimaxHeuristicAgent(MinimaxAgent):
         # Fill this in, if it pleases you.
         #
         return 26  # Change this line, unless you have something better to do.
-
