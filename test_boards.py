@@ -14,11 +14,43 @@ boards['test_1'] = reversed([
     [  1, -1 ] 
 ])
 
+boards['test_1.1'] = reversed([  
+    [  0,  0 ],                       
+    [  0,  0 ],
+    [  0,  0 ] 
+])
+
+boards['test_1.2'] = reversed([  
+    [  0,  0,  0 ],                       
+    [  0,  0,  0 ],
+    [  0,  0,  0 ] 
+])
+
+boards['test_1.3'] = reversed([  
+    [  0,  0,  0 ],                       
+    [  0,  0,  0 ],
+    [  -2,  0,  -2 ] 
+])
+
 boards['test_2'] = reversed([  
     [ -1,   0,  0, -1, -1 ],  
     [ -1,   1, -1,  1,  1 ],
     [  1,  -1,  1, -1,  1 ],
     [  1,   1, -1,  1, -1 ] 
+])
+
+boards['test_2.1'] = reversed([  
+    [ 0,  0,  0,  0,  0 ],  
+    [ 0,  0,  0,  0,  0 ],
+    [ -1, 0,  0, -1, -1 ],
+    [ 1,  -2, -2,  1, -2 ] 
+])
+
+boards['test_2.2'] = reversed([  
+    [ 0,  0,  0,  0,  0 ],  
+    [ 0,  0,  0,  0,  0 ],
+    [ 0,  0,  0,  0,  0 ],
+    [ 1,  1, -1,  1, -1 ] 
 ])
 
 boards['writeup_1'] = reversed([
@@ -46,7 +78,9 @@ boards['tournament'] = reversed([
     [  0,  0,  0, -2,  0,  0,  0 ]
 ])
 
-boards['your_test'] = reversed([])  # put something here!
-
-
-
+boards['your_test'] = reversed([
+    [ 0,  0,  0, 0, 0 ],  
+    [ 0,  0,  0, 0, 0 ],
+    [ 0,  0,  0, 0, 0 ],
+    [ 0,  1, -1, 0, 0 ] 
+])  # put something here!
